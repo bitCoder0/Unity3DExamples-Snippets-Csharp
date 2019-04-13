@@ -1,0 +1,13 @@
+﻿/*
+	Checking if touch or click is over an ui element
+	taken form:
+	https://answers.unity.com/questions/1115464/ispointerovergameobject-not-working-with-touch-inp.html
+*/
+  private bool IsPointerOverUIObject() {
+     PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+     eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x,
+	  Input.mousePosition.y);
+     List<RaycastResult> results = new List<RaycastResult>();
+     EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+     return results.Count > 0;
+ 		}
