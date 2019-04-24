@@ -6,9 +6,10 @@ using UnityEngine;
 	this script should be assigned to the bullet prefab
 	the bullet will follow the game gameObject with tag "Player" as target,
 	you can also access the player transform by using public variable by a litle change
-	bullet should have rigidbody component and player should have a collider and rigidbody
+	bullet should have a collider component and player should have a collider and rigidbody
 	*/
-public class TwoDBullet : MonoBehaviour {
+
+public class bullet : MonoBehaviour {
 
     public int speed = 30;
 
@@ -34,7 +35,23 @@ public class TwoDBullet : MonoBehaviour {
         } else {
             transform.position =
                 Vector2.MoveTowards (transform.position, playerFirstPos, speed * Time.deltaTime);
+            if (transform.position.x == playerFirstPos.x && transform.position.y == playerFirstPos.y) {
+                destroyBullet ();
+                //bullet missed the player! you can add more logic here
+            }
 
         }
+    }
+
+    void OnTriggerEnter2D (Collider2D other) {
+        if (other.tag == "Player") //destroyes the bullet when it collides with player
+        {
+            destroyBullet ();
+            //bullet collided with player! you can add more logic here
+        }
+
+    }
+    private void destroyBullet () {
+        Destroy (gameObject);
     }
 }
