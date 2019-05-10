@@ -1,0 +1,4 @@
+    void Update()
+    {
+        gameObject.GetComponent<Transform>().Rotate(Vector3.back*Time.deltaTime * 30);//back = clockwise(0,0,-1) - forward = anti clockwise(0,0,1)
+    }
