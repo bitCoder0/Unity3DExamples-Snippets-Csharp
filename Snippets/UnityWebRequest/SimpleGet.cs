@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -7,7 +6,7 @@ using UnityEngine.Networking;
 
 public class SimpleGet : MonoBehaviour {
 
-    public readonly string server = "http://jsonplaceholder.typicode.com/posts";
+    public string server = "http://jsonplaceholder.typicode.com/posts";
 
     void Start () {
         StartCoroutine (GetText ());
@@ -24,7 +23,7 @@ public class SimpleGet : MonoBehaviour {
             Debug.Log ("Successfully retrieved data from server:\n" + www.downloadHandler.text);
 
             // Or retrieve results as binary data
-            byte[] results = www.downloadHandler.data;
+           // byte[] results = www.downloadHandler.data;
         }
     }
 }
